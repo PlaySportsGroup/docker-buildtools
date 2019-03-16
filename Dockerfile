@@ -10,7 +10,8 @@ RUN apk add --no-cache \
         libc6-compat \
         openssh-client \
         git \
-        gnupg
+        gnupg \
+        rsync
 
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH
@@ -42,3 +43,9 @@ RUN COMPOSE_URL="https://circle-downloads.s3.amazonaws.com/circleci-images/cache
   && curl --silent --show-error --location --fail --retry 3 --output /usr/bin/docker-compose $COMPOSE_URL \
   && chmod +x /usr/bin/docker-compose \
   && ls -la /usr/bin/docker-compose
+
+# Install git-crypt
+RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \
+  curl -LO https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
+  apk add --no-cache git-crypt-0.6.0-r1.apk && \
+  rm git-crypt-0.6.0-r1.apk

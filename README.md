@@ -9,7 +9,12 @@ Alpine buildtools image that installs:
 - kubectl
 - docker
 - docker-compose
-- git / openssh / curl / python
+- git
+- git-crypt
+- openssh
+- curl
+- python
+- rsync
 
 
 Useful for running CI tasks.

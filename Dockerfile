@@ -2,7 +2,7 @@ FROM alpine
 ARG CLOUD_SDK_VERSION=238.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
-RUN apk add --no-cache curl python py-crcmod bash libc6-compat openssh-client git gnupg rsync
+RUN apk add --no-cache curl python py-crcmod bash libc6-compat openssh-client git gnupg rsync coreutils
 
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH

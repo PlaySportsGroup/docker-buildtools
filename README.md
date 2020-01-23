@@ -15,6 +15,8 @@ Alpine buildtools image that installs:
 - curl
 - python
 - rsync
+- npm
+- node 8, 10 and 12
 
 
 Useful for running CI tasks.

@@ -2,7 +2,7 @@ FROM alpine
 ARG CLOUD_SDK_VERSION=280.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
-RUN apk add --no-cache curl python python3 py-crcmod py-pip python-dev libffi-dev bash libc6-compat openssh-client openssl-dev git gnupg rsync coreutils gcc libc-dev make npm ca-certificates ncurses g++ libgcc linux-headers grep util-linux binutils findutils libexecinfo-dev
+RUN apk add --no-cache curl python python3 py-crcmod py-pip python-dev libffi-dev bash libc6-compat openssh-client openssl-dev git gnupg rsync coreutils gcc libc-dev make npm ca-certificates ncurses g++ libgcc linux-headers grep util-linux binutils findutils libexecinfo-dev zip
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 ENV NVM_DIR /root/.nvm
 ENV PATH $NVM_DIR:$PATH
@@ -15,13 +15,13 @@ RUN $NVM_DIR/nvm.sh install 12
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH
 RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
-    tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
-    rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
-    ln -s /lib /lib64 && \
-    gcloud config set core/disable_usage_reporting true && \
-    gcloud config set component_manager/disable_update_check true && \
-    gcloud config set metrics/environment github_docker_image && \
-    gcloud --version
+  tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+  rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+  ln -s /lib /lib64 && \
+  gcloud config set core/disable_usage_reporting true && \
+  gcloud config set component_manager/disable_update_check true && \
+  gcloud config set metrics/environment github_docker_image && \
+  gcloud --version
 
 # Adds kubectl
 RUN export KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) \

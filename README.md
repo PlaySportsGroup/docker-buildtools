@@ -17,6 +17,7 @@ Alpine buildtools image that installs:
 - rsync
 - npm
 - node 8, 10 and 12
+- zip
 
 
 Useful for running CI tasks.

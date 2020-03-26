@@ -1,5 +1,5 @@
 FROM alpine
-ARG CLOUD_SDK_VERSION=280.0.0
+ARG CLOUD_SDK_VERSION=286.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
 RUN apk add --no-cache curl python python3 py-crcmod py-pip python-dev libffi-dev bash libc6-compat openssh-client openssl-dev git gnupg rsync coreutils gcc libc-dev make npm ca-certificates ncurses g++ libgcc linux-headers grep util-linux binutils findutils libexecinfo-dev

@@ -22,4 +22,8 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
   gcloud --version
 
 RUN pip install \
-  flake8
+  flake8 \
+  pytest \
+  pytest-cov \
+  pytest-mock \
+  mongomock

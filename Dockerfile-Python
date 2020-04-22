@@ -26,4 +26,5 @@ RUN pip install \
   pytest \
   pytest-cov \
   pytest-mock \
-  mongomock
+  mongomock \
+  requests

@@ -21,6 +21,8 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
   gcloud config set metrics/environment github_docker_image && \
   gcloud --version
 
+RUN gcloud components install beta
+
 RUN pip install \
   flake8 \
   pytest \

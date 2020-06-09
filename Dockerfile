@@ -2,7 +2,7 @@ FROM alpine
 ARG CLOUD_SDK_VERSION=287.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
-RUN apk add --no-cache curl python python3 py-crcmod py-pip python-dev python3-dev libffi-dev bash libc6-compat openssh-client openssl-dev git gnupg rsync coreutils gcc libc-dev make npm ca-certificates ncurses g++ libgcc linux-headers grep util-linux binutils findutils libexecinfo-dev zip
+RUN apk add --no-cache curl python3 py3-crcmod py3-pip python3-dev libffi-dev bash libc6-compat openssh-client openssl-dev git gnupg rsync coreutils gcc libc-dev make npm ca-certificates ncurses g++ libgcc linux-headers grep util-linux binutils findutils libexecinfo-dev zip
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 ENV NVM_DIR /root/.nvm
 ENV PATH $NVM_DIR:$PATH
@@ -37,7 +37,7 @@ RUN export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.dock
   && rm -rf /tmp/docker /tmp/docker.tgz
 
 # Install docker-compose
-RUN python -m ensurepip --default-pip && pip install docker-compose
+RUN python3 -m ensurepip --default-pip && pip3 install docker-compose
 
 # Install git-crypt
 RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \

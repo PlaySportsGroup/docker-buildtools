@@ -9,7 +9,7 @@ ENV PATH="/usr/lib/jvm/java-1.8-openjdk/bin:${PATH}"
 ARG CLOUD_SDK_VERSION=287.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
-RUN apk add --no-cache python3 curl bash openssh-client git grep zip
+RUN apk add --no-cache python3 curl bash openssh-client git grep zip coreutils
 
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH
@@ -27,3 +27,5 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
   curl -LO https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
   apk add --no-cache git-crypt-0.6.0-r1.apk && \
   rm git-crypt-0.6.0-r1.apk
+
+RUN npm i -g migrate@1.6.2 firebase-tools@8.4.1

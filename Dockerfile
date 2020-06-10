@@ -1,4 +1,9 @@
+FROM openjdk:8-alpine AS openjava8
 FROM alpine
+
+COPY --from=openjava8 /usr/lib/jvm/java-1.8-openjdk /usr/lib/jvm/java-1.8-openjdk
+ENV PATH="/usr/lib/jvm/java-1.8-openjdk/bin:${PATH}"
+
 ARG CLOUD_SDK_VERSION=287.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 

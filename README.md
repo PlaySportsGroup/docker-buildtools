@@ -1,7 +1,7 @@
 # playsportsgroup/buildtools
 
-![Docker Automated build](https://img.shields.io/docker/automated/ashsmith/buildtools.svg)
-![Docker Build Status](https://img.shields.io/docker/build/ashsmith/buildtools.svg)
+![Docker Automated build](https://img.shields.io/docker/cloud/automated/playsportsgroup/buildtools)
+![Docker Build Status](https://img.shields.io/docker/cloud/build/playsportsgroup/buildtools)
 
 Alpine buildtools image that installs:
 

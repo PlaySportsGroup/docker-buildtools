@@ -47,9 +47,6 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
   rm git-crypt-0.6.0-r1.apk
 
 # Install AWS CLI
-ENV PATH /usr/local/bin/aws:$PATH
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-  unzip awscliv2.zip && \
-  rm awscliv2.zip && \
-  ./aws/install -i /usr/local/aws -b /usr/local/bin/aws
-
+ENV PATH /root/.local/bin:$PATH
+RUN pip3 install awscli --upgrade --user
+RUN aws --version

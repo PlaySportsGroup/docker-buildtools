@@ -45,3 +45,8 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
   curl -LO https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
   apk add --no-cache git-crypt-0.6.0-r1.apk && \
   rm git-crypt-0.6.0-r1.apk
+
+# Install AWS CLI
+ENV PATH /root/.local/bin:$PATH
+RUN pip3 install awscli --upgrade --user
+RUN aws --version

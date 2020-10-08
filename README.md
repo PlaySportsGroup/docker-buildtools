@@ -18,6 +18,7 @@ Alpine buildtools image that installs:
 - npm
 - node 8, 10 and 12
 - zip
+- aws
 
 
 Useful for running CI tasks.

@@ -38,7 +38,7 @@ RUN export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.dock
   && rm -rf /tmp/docker /tmp/docker.tgz
 
 # Install docker-compose
-RUN python3 -m ensurepip --default-pip && python3 -m pip install PyYAML==5.3 && pip3 install docker-compose
+RUN python3 -m ensurepip --default-pip && python3 -m pip install PyYAML -U && pip3 install docker-compose
 
 
 # Install git-crypt

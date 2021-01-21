@@ -38,7 +38,8 @@ RUN export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.dock
   && rm -rf /tmp/docker /tmp/docker.tgz
 
 # Install docker-compose
-RUN python3 -m ensurepip --default-pip && pip3 install docker-compose
+RUN python3 -m ensurepip --default-pip && python3 -m pip install PyYAML==5.3 && pip3 install docker-compose
+
 
 # Install git-crypt
 RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \

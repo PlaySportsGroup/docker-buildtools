@@ -22,3 +22,11 @@ Alpine buildtools image that installs:
 
 
 Useful for running CI tasks.
+
+## Releasing new container version
+
+After approval and merging to master branch.  Draft a new release with detailed notes, keeping the convention of previous releases.  Tagging should include an incremented version number.  For example, `v4.2`
+
+Publishing this new version will create the build on dockerhub.
+
+The current dockerhub repo url is https://hub.docker.com/repository/docker/playsportsgroup/buildtools

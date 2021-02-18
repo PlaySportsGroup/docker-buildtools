@@ -6,27 +6,29 @@ ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 # Dependencies
 RUN apk add --no-cache \ 
     bash \
+    binutils \
     ca-certificates \
     coreutils \ 
     curl \
-    binutils \
     findutils \ 
     g++ \ 
     gcc \
     git \
     gnupg \
     grep \
-    jq libc-dev \
+    jq \
+    libc6-compat \
+    libc-dev \
     libexecinfo-dev \
     libffi-dev \
+    libgcc  \
     linux-headers \
-    libc6-compat \
     make \
+    ncurses \
     npm \ 
-    py3-pip \
-    libgcc ncurses \
     openssh-client \
     openssl-dev \
+    py3-pip \
     python3-dev \
     python3 \
     py3-crcmod \

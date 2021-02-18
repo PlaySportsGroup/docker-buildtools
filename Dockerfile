@@ -13,6 +13,11 @@ RUN $NVM_DIR/nvm.sh install 8
 RUN $NVM_DIR/nvm.sh install 10
 RUN $NVM_DIR/nvm.sh install 12
 
+# install toolchain for rust as required by cryptography
+RUN curl https://sh.rustup.rs -sSf | \
+    sh -s -- --default-toolchain stable -y
+ENV PATH=/root/.cargo/bin:$PATH
+
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH
 RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
@@ -38,7 +43,7 @@ RUN export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.dock
   && rm -rf /tmp/docker /tmp/docker.tgz
 
 # Install docker-compose
-RUN python3 -m ensurepip --default-pip && python3 -m pip install PyYAML -U && pip3 install docker-compose
+RUN python3 -m ensurepip --upgrade --default-pip && python3 -m pip install --upgrade pip && python3 -m pip install PyYAML -U && pip3 install docker-compose
 
 
 # Install git-crypt

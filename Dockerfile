@@ -10,10 +10,11 @@ RUN apk add --no-cache \
     ca-certificates \
     coreutils \ 
     curl \
-    findutils \ 
+    findutils \
     g++ \ 
     gcc \
     git \
+    git-crypt \
     gnupg \
     grep \
     jq \

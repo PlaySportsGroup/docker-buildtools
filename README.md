@@ -4,21 +4,39 @@
 ![Docker Build Status](https://img.shields.io/docker/cloud/build/playsportsgroup/buildtools)
 
 Alpine buildtools image that installs:
-
-- gcloud
-- kubectl
-- docker
-- docker-compose
-- git
-- git-crypt
-- openssh
-- curl
-- python
-- rsync
-- npm
-- node 8, 10 and 12
-- zip
-- aws
+    AWS cli
+    binutils
+    ca-certificates
+    coreutils
+    curl
+    findutils
+    g++ 
+    gcc
+    gcloud
+    git
+    git-crypt
+    gnupg
+    grep
+    jq
+    libc6-compat
+    libc-dev
+    libexecinfo-dev
+    libffi-dev
+    libgcc
+    linux-headers
+    make
+    ncurses
+    node 8, 10, 12
+    npm
+    openssh-client
+    openssl-dev
+    py3-pip
+    python3-dev
+    python3
+    py3-crcmod
+    rsync
+    util-linux
+    zip 
 
 
 Useful for running CI tasks.

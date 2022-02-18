@@ -45,6 +45,8 @@ RUN $NVM_DIR/nvm.sh --version
 RUN $NVM_DIR/nvm.sh install 8
 RUN $NVM_DIR/nvm.sh install 10
 RUN $NVM_DIR/nvm.sh install 12
+RUN $NVM_DIR/nvm.sh install 14
+RUN $NVM_DIR/nvm.sh install 16
 
 # install toolchain for rust as required by cryptography
 RUN curl https://sh.rustup.rs -sSf | \

@@ -88,3 +88,7 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
 # Install AWS CLI
 ENV PATH /root/.local/bin:$PATH
 RUN pip3 install awscli --upgrade --user
+
+# Install NPM install
+RUN npm install -g mongodb-realm-cli
+

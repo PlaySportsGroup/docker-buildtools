@@ -80,15 +80,11 @@ RUN python3 -m ensurepip --upgrade --default-pip && python3 -m pip install --upg
 
 
 # Install git-crypt
-RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \
-    curl -LO https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
-    apk add --no-cache git-crypt-0.6.0-r1.apk && \
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \
+    wget https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
     rm git-crypt-0.6.0-r1.apk
 
 # Install AWS CLI
 ENV PATH /root/.local/bin:$PATH
 RUN pip3 install awscli --upgrade --user
-
-# Install NPM install
-RUN npm install -g mongodb-realm-cli
 

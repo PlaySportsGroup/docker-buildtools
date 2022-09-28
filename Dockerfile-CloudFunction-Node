@@ -1,12 +1,12 @@
 FROM openjdk:8-alpine AS openjava8
 
 #Node version should match target cloud function deploy env
-FROM node:10.18.1-alpine
+FROM node:16
 
 COPY --from=openjava8 /usr/lib/jvm/java-1.8-openjdk /usr/lib/jvm/java-1.8-openjdk
 ENV PATH="/usr/lib/jvm/java-1.8-openjdk/bin:${PATH}"
 
-ARG CLOUD_SDK_VERSION=401.0.0
+ARG CLOUD_SDK_VERSION=324.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
 RUN apk add --no-cache python3 curl bash openssh-client git grep zip coreutils
@@ -28,4 +28,4 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
   apk add --no-cache git-crypt-0.6.0-r1.apk && \
   rm git-crypt-0.6.0-r1.apk
 
-RUN npm i -g migrate@1.6.2 firebase-tools@8.4.1 firebase-admin@8.10.0 eslint eslint-config-airbnb-base eslint-plugin-import depcheck
+RUN npm i -g migrate@1.6.2 firebase-tools@11.11.0 firebase-admin@11.0.1 eslint eslint-config-airbnb-base eslint-plugin-import depcheck

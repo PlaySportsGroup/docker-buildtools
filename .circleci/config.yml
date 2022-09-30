@@ -18,7 +18,7 @@ jobs:
       - run:
           name: build docker images
           command: |
-            docker build -t playsportsgroup/buildtools -f Dockerfile
+            docker build -t playsportsgroup/nodebuildtools .
 
 
 workflows:

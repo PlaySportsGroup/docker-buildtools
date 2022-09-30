@@ -15,7 +15,7 @@ workflows:
             filters:
             branches:
               only:
-                - master
+                - ci
         - build:
           context: ['docker-hub-credentials']
           run:

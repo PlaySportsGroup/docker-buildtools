@@ -13,7 +13,6 @@ jobs:
     steps:
       - checkout
       - docker/check:
-          context: ['docker-hub-credentials']
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASS
       - run: echo "this is the build job"
@@ -22,5 +21,6 @@ jobs:
 workflows:
   build:
     jobs:
-      - build_docker_images
+      - build_docker_images:
+          context: ['docker-hub-credentials']
 

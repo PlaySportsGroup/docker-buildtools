@@ -3,19 +3,22 @@ orbs:
   docker: circleci/docker@1.4.0
 
 executors:
-  node:
+  base:
     docker:
       - image: cimg/base:2022.09
 
 jobs:
   build_docker_images:
-    executor: node
+    executor: base
     steps:
       - checkout
       - docker/check:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASS
-      - run: echo "this is the build job"
+      - run:
+          name: build docker images
+          command: |
+            docker build -t playsportsgroup/buildtools -f Dockerfile
 
 
 workflows:
@@ -26,5 +29,5 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - ci
 

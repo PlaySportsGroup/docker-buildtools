@@ -15,6 +15,7 @@ jobs:
       - docker/check:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASS
+      - setup_remote_docker
       - run:
           name: build docker images
           command: |

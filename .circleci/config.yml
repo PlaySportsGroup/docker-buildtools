@@ -19,25 +19,8 @@ jobs:
       - run: echo "this is the build job"
 
 
-  # build_containers:
-  #   jobs:
-  #     steps:
-  #       - docker/check:
-  #           context: ['docker-hub-credentials']
-  #           docker-username: DOCKER_LOGIN
-  #           docker-password: DOCKER_PASS
-  #           filters:
-  #           branches:
-  #             only:
-  #               - ci
-  #       - build:
-  #         context: ['docker-hub-credentials']
-  #         run:
-  #           name: Build Images
-  #           command: |
-  #             echo 'hello you can!'
-  #         filters:
-  #           branches:
-  #             only:
-  #               - ci
+workflows:
+  build:
+    jobs:
+      - build_docker_images
 

@@ -7,6 +7,17 @@ executors:
     docker:
       - image: cimg/base:2022.09
 
+commands:
+  parameters:
+    image_name:
+      type: string
+  build_and_push:
+      - run:
+          name: build docker images
+          command: |
+            docker build -t playsportsgroup/<< parameters.image_name >> << parameters.image_name >>
+
+
 jobs:
   build_docker_images:
     executor: base
@@ -16,11 +27,8 @@ jobs:
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASS
       - setup_remote_docker
-      - run:
-          name: build docker images
-          command: |
-            docker build -t playsportsgroup/nodebuildtools .
-
+      - build_and_push:
+          image_name: buildtools-node
 
 workflows:
   build:

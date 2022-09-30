@@ -1,0 +1,29 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@1.4.0
+
+workflows:
+  version: 2
+
+  build_containers:
+    jobs:
+      steps:
+        - docker/check:
+            context: ['docker-hub-credentials']
+            docker-username: DOCKER_LOGIN
+            docker-password: DOCKER_PASS
+            filters:
+            branches:
+              only:
+                - master
+        - build:
+          context: ['docker-hub-credentials']
+          run:
+            name: Build Images
+            command: |
+              echo 'hello you can!'
+          filters:
+            branches:
+              only:
+                - ci
+

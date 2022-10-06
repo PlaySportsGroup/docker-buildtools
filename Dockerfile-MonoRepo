@@ -1,0 +1,13 @@
+FROM cimg/node:lts-browsers
+# Extend current image and add necessary options
+# Check the linux distribition of cimg/node:lts-browsers
+# Dont need to upload image to Docker, can just use local file
+# based on ubuntu image (or debian)
+# start off with everything in its own run command and reduce down once it is working
+RUN sudo apt-get install apt-transport-https ca-certificates gnupg
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \ 
+  | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \ 
+  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg \ 
+  | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \ 
+  && sudo apt-get update \
+  && sudo apt-get install google-cloud-cli

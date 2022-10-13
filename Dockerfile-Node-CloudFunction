@@ -1,7 +1,7 @@
 FROM openjdk:8-alpine AS openjava8
 
 #Node version should match target cloud function deploy env
-FROM node:16-alpine
+FROM node:12.13.0-alpine
 
 COPY --from=openjava8 /usr/lib/jvm/java-1.8-openjdk /usr/lib/jvm/java-1.8-openjdk
 ENV PATH="/usr/lib/jvm/java-1.8-openjdk/bin:${PATH}"

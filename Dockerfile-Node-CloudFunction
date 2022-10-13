@@ -28,5 +28,4 @@ RUN curl --silent --output /etc/apk/keys/sgerrand.rsa.pub https://raw.githubuser
   apk add --no-cache git-crypt-0.6.0-r1.apk && \
   rm git-crypt-0.6.0-r1.apk
 
-RUN npm i -g migrate@1.6.2 firebase-tools@11.11.0 firebase-admin@11.0.1 eslint eslint-config-airbnb-base eslint-plugin-import depcheck
-
+RUN npm i -g migrate@1.6.2 firebase-tools@9.23.3 firebase-admin@9.12.0 eslint eslint-config-airbnb-base eslint-plugin-import depcheck

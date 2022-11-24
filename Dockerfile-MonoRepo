@@ -12,4 +12,4 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.
   && sudo apt-get update \
   && sudo apt-get install google-cloud-cli
 
-RUN yarn global add turbo ts-node
+RUN yarn global add turbo ts-node webpack webpack-cli

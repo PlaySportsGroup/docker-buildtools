@@ -1,4 +1,4 @@
-FROM cimg/node:lts-browsers
+FROM circleci/node:16
 # Extend current image and add necessary options
 # Check the linux distribition of cimg/node:lts-browsers
 # Dont need to upload image to Docker, can just use local file

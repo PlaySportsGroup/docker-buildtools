@@ -1,15 +1,28 @@
-FROM circleci/node:16
-# Extend current image and add necessary options
-# Check the linux distribition of cimg/node:lts-browsers
-# Dont need to upload image to Docker, can just use local file
-# based on ubuntu image (or debian)
-# start off with everything in its own run command and reduce down once it is working
-RUN sudo apt-get install apt-transport-https ca-certificates gnupg
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" \ 
-  | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \ 
-  && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg \ 
-  | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \ 
-  && sudo apt-get update \
-  && sudo apt-get install google-cloud-cli
+FROM node:16-alpine
+
+ARG CLOUD_SDK_VERSION=410.0.0
+ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
+
+RUN apk add --no-cache \
+  curl \
+  git \
+  npm \
+  yarn \
+  coreutils \
+  grep \ 
+  zip \
+  bash
+
+# Install gcloud
+ENV PATH /google-cloud-sdk/bin:$PATH
+RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+  tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+  rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+  ln -s /lib /lib64 && \
+  gcloud config set core/disable_usage_reporting true && \
+  gcloud config set component_manager/disable_update_check true && \
+  gcloud config set metrics/environment github_docker_image && \
+  gcloud --version
+
 
 RUN yarn global add turbo ts-node webpack webpack-cli

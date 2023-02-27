@@ -1,0 +1,4 @@
+# Used for test coverage and running tests for Sonic
+FROM playsportsgroup/buildtools
+
+RUN apk add openjdk12-jre

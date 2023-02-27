@@ -1,5 +1,4 @@
 # Used for test coverage and running tests for Sonic
 FROM playsportsgroup/buildtools
 
-RUN apt-get install -y default-jre && \
-    apt-get clean;
+RUN apk add openjdk12-jre

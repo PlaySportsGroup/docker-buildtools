@@ -3,6 +3,9 @@ FROM alpine:3.16.0
 ARG CLOUD_SDK_VERSION=410.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
 
+ARG KUBECTL_VERSION=v1.21.14
+ENV KUBECTL_VERSION=$KUBECTL_VERSION
+
 # Dependencies
 RUN apk add --no-cache \ 
     bash \
@@ -63,8 +66,7 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
     gcloud --version
 
 # Adds kubectl
-RUN export KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) \
-    && curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
     && chmod u+x kubectl && mv kubectl /usr/bin/kubectl
 
 # Install docker

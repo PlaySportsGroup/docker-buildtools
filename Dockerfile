@@ -1,4 +1,4 @@
-FROM alpine:3.16.0
+FROM alpine:3.17.0
 
 ARG CLOUD_SDK_VERSION=410.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION
@@ -23,7 +23,6 @@ RUN apk add --no-cache \
     jq \
     libc6-compat \
     libc-dev \
-    libexecinfo-dev \
     libffi-dev \
     libgcc  \
     linux-headers \

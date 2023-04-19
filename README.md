@@ -46,20 +46,18 @@ Useful for running CI tasks.
 
 ## Images explained
 
-All images derive from `DockerFile` currently.  Used for the purpose of CI including testing and building.
-
 Tags are configured in DockerHub.
 
 | Dockerfile Name                                | Purpose                                                         | Tag                   | Notes                                                            |
 | ---------------------------------------------- | --------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------- |
-| <span style="color: #BFFFD8">Dockerfile</span> | <span style="color: #BFFFD8">Base Image for build tools</span>  | `latest`              |                                                                  |
+| <span style="color: #BFFFD8">Dockerfile</span> | <span style="color: #BFFFD8">Base Image for build tools</span>  | `latest`              | Derives from DockerFile |
 | Dockerfile-CloudFunction-Node                  | for Cloud Functions                                             | `node-cfn-latest`     | Used in tourmalet-cloud-functions                                |
-| Dockerfile-MonoRepo                            | For MonoRepo                                                    | `monorepo`            |                                                                  |
-| Dockerfile-MonoRepo-Prerelease                 | For MonoRepo, testing prerelease                                | `monorepo-prerelease` | Use for testing                                                                  |
+| Dockerfile-MonoRepo                            | For MonoRepo                                                    | `monorepo`            | Derives from DockerFile                                                                 |
+| Dockerfile-MonoRepo-Prerelease                 | For MonoRepo, testing prerelease                                | `monorepo-prerelease` | Use for testing, derives from DockerFile                                                                   |
 | Dockerfile-Node-CloudFunction                  |                                                                 | `node-cloudfunction`  | Unknown - Can be deleted                                         |
 | Dockerfile-Prerelease                          | For prerelease of base image                                    | `latest-prerelease`   | Use for testing                                                                     |
 | Dockerfile-Python                              | For Python                                                      | `python-latest`       |                                                                  |
-| Dockerfile-Sonar                               | For SonarCloud                                                  | `sonar`               | Heavy dependencies bloat (requires own image), used for MonoRepo |
+| Dockerfile-Sonar                               | For SonarCloud                                                  | `sonar`               | Heavy dependencies bloat (requires own image), used for MonoRepo, Derives from DockerFile  |
 
 
 

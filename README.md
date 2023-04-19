@@ -21,7 +21,7 @@ Alpine buildtools image that installs:
     jq
     libc6-compat
     libc-dev
-    libexecinfo-dev
+    libexecinfo-dev         *Removed because of Alpine 3.17.0*
     libffi-dev
     libgcc
     linux-headers

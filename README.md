@@ -52,7 +52,7 @@ Tags are configured in DockerHub.
 
 | Dockerfile Name                                | Purpose                                                         | Tag                   | Notes                                                            |
 | ---------------------------------------------- | --------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------- |
-| <span style="color: #BFFFD8">Dockerfile</span> | <span style="color: #BFFFD8">Base Image for build tools</span> | `latest`              |                                                                  |
+| <span style="color: #BFFFD8">Dockerfile</span> | <span style="color: #BFFFD8">Base Image for build tools</span>  | `latest`              |                                                                  |
 | Dockerfile-CloudFunction-Node                  | for Cloud Functions                                             | `node-cfn-latest`     | Used in tourmalet-cloud-functions                                |
 | Dockerfile-MonoRepo                            | For MonoRepo                                                    | `monorepo`            |                                                                  |
 | Dockerfile-MonoRepo-Prerelease                 | For MonoRepo, testing prerelease                                | `monorepo-prerelease` | Use for testing                                                                  |

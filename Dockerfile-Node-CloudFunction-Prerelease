@@ -1,3 +1,5 @@
+# Not currently in use. Used as part of the node upgrade process.
+
 FROM openjdk:8-alpine AS openjava8
 
 #Node version should match target cloud function deploy env

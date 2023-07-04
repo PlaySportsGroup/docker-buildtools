@@ -1,7 +1,7 @@
 # Not currently in use used when upgading TCF dependecies
 
 #Node version should match target cloud function deploy env
-FROM node:16.19.0-alpine
+FROM node:18.16.1-alpine
 
 ARG CLOUD_SDK_VERSION=401.0.0
 ENV CLOUD_SDK_VERSION=$CLOUD_SDK_VERSION

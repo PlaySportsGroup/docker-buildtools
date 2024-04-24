@@ -71,8 +71,3 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 # Adds kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
     && chmod u+x kubectl && mv kubectl /usr/bin/kubectl
-
-# Install AWS CLI
-ENV PATH /root/.local/bin:$PATH
-RUN pip3 install awscli --upgrade --user
-

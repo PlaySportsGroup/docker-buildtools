@@ -7,14 +7,16 @@ ARG KUBECTL_VERSION=v1.21.14
 ENV KUBECTL_VERSION=$KUBECTL_VERSION
 
 # Dependencies
-RUN apk add --no-cache \ 
+RUN apk add --no-cache \
     bash \
     binutils \
     ca-certificates \
-    coreutils \ 
+    coreutils \
     curl \
+    docker \
+    docker-compose \
     findutils \
-    g++ \ 
+    g++ \
     gcc \
     git \
     git-crypt \
@@ -28,7 +30,7 @@ RUN apk add --no-cache \
     linux-headers \
     make \
     ncurses \
-    npm \ 
+    npm \
     openssh-client \
     openssl-dev \
     py3-pip \
@@ -37,7 +39,7 @@ RUN apk add --no-cache \
     py3-crcmod \
     rsync \
     util-linux \
-    zip 
+    zip
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 ENV NVM_DIR /root/.nvm
@@ -55,9 +57,9 @@ ENV PATH=/root/.cargo/bin:$PATH
 
 # Install gcloud
 ENV PATH /google-cloud-sdk/bin:$PATH
-RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
-    tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
-    rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+    tar xzf google-cloud-cli-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+    rm google-cloud-cli-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
     ln -s /lib /lib64 && \
     gcloud config set core/disable_usage_reporting true && \
     gcloud config set component_manager/disable_update_check true && \
@@ -68,23 +70,6 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 # Adds kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl \
     && chmod u+x kubectl && mv kubectl /usr/bin/kubectl
-
-# Install docker
-RUN export DOCKER_VERSION=$(curl --silent --fail --retry 3 https://download.docker.com/linux/static/stable/x86_64/ | grep -o -e 'docker-[.0-9]*-ce\.tgz' | sort -r | head -n 1) \
-    && DOCKER_URL="https://download.docker.com/linux/static/stable/x86_64/${DOCKER_VERSION}" \
-    && curl --silent --show-error --location --fail --retry 3 --output /tmp/docker.tgz "${DOCKER_URL}" \
-    && tar -xz -C /tmp -f /tmp/docker.tgz \
-    && mv /tmp/docker/* /usr/bin \
-    && rm -rf /tmp/docker /tmp/docker.tgz
-
-# Install docker-compose
-RUN python3 -m ensurepip --upgrade --default-pip && python3 -m pip install --upgrade pip && python3 -m pip install PyYAML -U && pip3 install docker-compose
-
-
-# Install git-crypt
-RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-git-crypt/master/sgerrand.rsa.pub && \
-    wget https://github.com/sgerrand/alpine-pkg-git-crypt/releases/download/0.6.0-r1/git-crypt-0.6.0-r1.apk && \
-    rm git-crypt-0.6.0-r1.apk
 
 # Install AWS CLI
 ENV PATH /root/.local/bin:$PATH

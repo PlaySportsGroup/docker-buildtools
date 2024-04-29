@@ -57,6 +57,7 @@ Tags are configured in DockerHub.
 | Dockerfile-Prerelease                          | For prerelease of base image                                    | `latest-prerelease`   | Use for testing                                                                     |
 | Dockerfile-Python                              | For Python                                                      | `python-latest`       |                                                                  |
 | Dockerfile-Sonar                               | For SonarCloud                                                  | `sonar`               | Heavy dependencies bloat (requires own image), used for MonoRepo, Derives from DockerFile  |
+| Dockerfile-DataEng-Tools                       | For Data Engineering purposes     |                             |                       |
 
 
 
